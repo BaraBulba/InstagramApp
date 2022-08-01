@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Instagram</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Search">Поиск</string>
+    <string name="tab_1">Фото</string>
+    <string name="tab_2">Сохраненные</string>
+    <string name="search_for_an_account">Введи свое имя пользователя, электронный адрес или номер телефона, связанные с вашим аккаунтом.</string>
+    <string name="already_have_an_account">У вас уже есть учетная запись? Тогда используйте её.</string>
+    <string name="forgot_your_data">Забыли свои учетные данные? Получить помощь со входом в систему.</string>
+    <string name="login_et_1box">Электронный адрес</string>
+    <string name="registration_via_email_or_phone">Зарегистрироваться с эл. адресом или номером
+    телефона</string>
+    <string name="personal_info_warning">Указывайте личную информацию, даже если аккаунт
+    используется для компании, домашнего животного или в других целях. Эта информация не будет
+    показана в вашем общедоступном профиле</string>
+</resources>

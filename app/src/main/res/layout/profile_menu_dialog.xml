@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/profile_dialog_bg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="30dp"
+        android:layout_height="3dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_small_thingi_dialog"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/settingsBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="?android:attr/selectableItemBackground"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view">
+
+        <TextView
+            android:id="@+id/tvSettings"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:paddingStart="24dp"
+            android:gravity="center_vertical"
+            android:text="Настройки"
+            android:drawableStart="@drawable/ic_settings"
+            android:drawablePadding="8dp"
+            android:textSize="16sp"
+            android:textColor="@color/black" />
+
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:id="@+id/archiveBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="?android:attr/selectableItemBackground"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/settingsBox">
+
+        <TextView
+            android:id="@+id/tvArchive"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:paddingStart="24dp"
+            android:gravity="center_vertical"
+            android:text="Архив"
+            android:drawableStart="@drawable/ic_archive"
+            android:drawablePadding="8dp"
+            android:textSize="16sp"
+            android:textColor="@color/black" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/yourActionsBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="?android:attr/selectableItemBackground"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/archiveBox">
+
+        <TextView
+            android:id="@+id/tvYourActions"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:paddingStart="24dp"
+            android:gravity="center_vertical"
+            android:text="Ваши действия"
+            android:drawableStart="@drawable/ic_your_action"
+            android:drawablePadding="8dp"
+            android:textSize="16sp"
+            android:textColor="@color/black" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/qrCodeBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="?android:attr/selectableItemBackground"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/yourActionsBox">
+
+        <TextView
+            android:id="@+id/tvQrCode"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:paddingStart="24dp"
+            android:gravity="center_vertical"
+            android:text="QR-код"
+            android:drawableStart="@drawable/ic_qr_code"
+            android:drawablePadding="8dp"
+            android:textSize="16sp"
+            android:textColor="@color/black" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/savedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="?android:attr/selectableItemBackground"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/qrCodeBox">
+
+        <TextView
+            android:id="@+id/tvSaved"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:paddingStart="24dp"
+            android:gravity="center_vertical"
+            android:text="Сохраненное"
+            android:drawableStart="@drawable/ic_bookmark"
+            android:drawablePadding="8dp"
+            android:textSize="16sp"
+            android:textColor="@color/black" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/closeFriendsBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="?android:attr/selectableItemBackground"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/savedBox">
+
+        <TextView
+            android:id="@+id/tvCloseFriends"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:paddingStart="24dp"
+            android:gravity="center_vertical"
+            android:text="Близкие друзья"
+            android:drawableStart="@drawable/ic_close_friends"
+            android:drawablePadding="8dp"
+            android:textSize="16sp"
+            android:textColor="@color/black" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/favoritesBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="?android:attr/selectableItemBackground"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/closeFriendsBox">
+
+        <TextView
+            android:id="@+id/tvFavorites"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:paddingStart="24dp"
+            android:gravity="center_vertical"
+            android:text="Избранное"
+            android:drawableStart="@drawable/ic_favorites"
+            android:drawablePadding="8dp"
+            android:textSize="16sp"
+            android:textColor="@color/black" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/covidBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="?android:attr/selectableItemBackground"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/favoritesBox">
+
+        <TextView
+            android:id="@+id/tvCovid"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:paddingStart="24dp"
+            android:gravity="center_vertical"
+            android:text="Центр информации о COVID-19"
+            android:drawableStart="@drawable/ic_covid"
+            android:drawablePadding="8dp"
+            android:textSize="16sp"
+            android:textColor="@color/black" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/exchangeMessageBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="?android:attr/selectableItemBackground"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/covidBox">
+
+        <TextView
+            android:id="@+id/tvExchangeMessage"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:paddingStart="24dp"
+            android:gravity="center_vertical"
+            android:text="Обновить функции обмена сообщениями"
+            android:drawableStart="@drawable/ic_message_renewal"
+            android:drawablePadding="8dp"
+            android:textSize="16sp"
+            android:textColor="@color/black" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/logoutBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="?android:attr/selectableItemBackground"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/exchangeMessageBox">
+
+        <TextView
+            android:id="@+id/tvLogout"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:paddingStart="24dp"
+            android:gravity="center_vertical"
+            android:text="Выйти"
+            android:drawableStart="@drawable/ic_logout"
+            android:drawablePadding="8dp"
+            android:textSize="16sp"
+            android:textColor="@color/black" />
+
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

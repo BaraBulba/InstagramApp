@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/account_settings_dialog_bg"
+    tools:context=".MainActivity">
+
+    <View
+        android:layout_width="30dp"
+        android:layout_height="3dp"
+        android:background="@drawable/bg_small_thingi_dialog"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toEndOf="@+id/tvChangePhotoProfile"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvChangePhotoProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:paddingBottom="20dp"
+        android:paddingStart="24dp"
+        android:text="Изменить фото профиля"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/newPhotoBox"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvChangePhotoProfile">
+
+        <TextView
+            android:id="@+id/tvNewPhotoProfile"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="24dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:gravity="center_vertical"
+            android:text="Новое фото профиля"
+            android:drawablePadding="8dp"
+            android:textSize="16sp"
+            android:textColor="@color/black" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/importFormFacebookBox"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newPhotoBox">
+
+        <TextView
+            android:id="@+id/tvImportFromFacebook"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="24dp"
+            android:gravity="center_vertical"
+            android:background="?android:attr/selectableItemBackground"
+            android:text="Импортировать из Facebook"
+            android:drawablePadding="8dp"
+            android:textSize="16sp"
+            android:textColor="@color/black" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/useAvatarBox"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/importFormFacebookBox">
+
+        <TextView
+            android:id="@+id/tvUseAvatar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="24dp"
+            android:gravity="center_vertical"
+            android:background="?android:attr/selectableItemBackground"
+            android:text="Испрользовать Аватар"
+            android:drawablePadding="8dp"
+            android:textSize="16sp"
+            android:textColor="@color/black" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/deletePhotoBox"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/useAvatarBox">
+
+        <TextView
+            android:id="@+id/tvDeleteProfilePhoto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="24dp"
+            android:gravity="center_vertical"
+            android:background="?android:attr/selectableItemBackground"
+            android:text="Удалить фото профиля"
+            android:drawablePadding="8dp"
+            android:textSize="16sp"
+            android:textColor="@color/red" />
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

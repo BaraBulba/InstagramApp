@@ -1,10 +1,9 @@
-package android.example.instagram.ui
+package android.example.instagram.ui.Profile
 
 import android.app.Activity
 import android.app.Dialog
 import android.app.ProgressDialog
 import android.content.Intent
-import android.example.instagram.Fragments.ProfileFragment
 import android.example.instagram.MainActivity
 import android.example.instagram.R
 import android.example.instagram.databinding.ActivityAccountSettingsBinding
@@ -20,7 +19,6 @@ import android.view.ViewGroup
 import android.view.Window
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.result.ActivityResult
 import com.google.android.gms.tasks.Continuation
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
@@ -30,14 +28,12 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.StorageTask
 import com.google.firebase.storage.UploadTask
 import com.squareup.picasso.Picasso
 import com.theartofdev.edmodo.cropper.CropImage
-import java.net.URI
 
 class AccountSettingsActivity : AppCompatActivity() {
 

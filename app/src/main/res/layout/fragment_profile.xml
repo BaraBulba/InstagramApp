@@ -79,7 +79,7 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -314,8 +314,8 @@
 
             </com.google.android.material.tabs.TabLayout>
 
-            <androidx.viewpager.widget.ViewPager
-                android:id="@+id/view_pager"
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPagerLayout"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -324,8 +324,8 @@
                 app:layout_constraintTop_toBottomOf="@+id/tab_layout" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-        
 
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

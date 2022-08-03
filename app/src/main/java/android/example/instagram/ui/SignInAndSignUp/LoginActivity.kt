@@ -1,4 +1,4 @@
-package android.example.instagram.ui.SignInAndLogIn
+package android.example.instagram.ui.SignInAndSignUp
 
 import android.app.ProgressDialog
 import android.content.Intent

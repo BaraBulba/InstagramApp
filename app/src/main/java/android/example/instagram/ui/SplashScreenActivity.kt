@@ -3,12 +3,11 @@ package android.example.instagram.ui
 import android.content.Intent
 import android.example.instagram.MainActivity
 import android.example.instagram.R
-import android.example.instagram.ui.SignInAndLogIn.StartSignInActivity
+import android.example.instagram.ui.SignInAndSignUp.StartSignInActivity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.coroutines.delay
 
 class SplashScreenActivity : AppCompatActivity() {
 

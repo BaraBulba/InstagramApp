@@ -70,7 +70,7 @@
             <ImageView
                 android:id="@+id/imageViewPost"
                 android:layout_width="0dp"
-                android:layout_height="450dp"
+                android:layout_height="500dp"
                 android:src="@drawable/default_ava"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -162,7 +162,6 @@
             android:textColor="@color/black"
             android:textStyle="bold"
             android:textSize="14sp"
-            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toStartOf="parent"
@@ -194,7 +193,6 @@
             android:maxLines="5"
             android:textColor="@color/black"
             android:textSize="14sp"
-            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="@+id/textViewPostPublisher"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textViewPostPublisher"
@@ -205,15 +203,15 @@
             android:id="@+id/textViewPostComments"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:visibility="gone"
+            android:textColor="@color/ultra_grey"
+            android:textSize="14sp"
             android:layout_marginTop="6dp"
             android:layout_marginStart="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewPostPublisher"
-            tools:text="comments"></TextView>
+            tools:text="Смотреть все комментарии"></TextView>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

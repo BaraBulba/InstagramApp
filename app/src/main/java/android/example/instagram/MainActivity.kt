@@ -3,12 +3,9 @@ package android.example.instagram
 import android.content.Intent
 import android.example.instagram.Fragments.*
 import android.example.instagram.databinding.ActivityMainBinding
-import android.os.Build
+import android.example.instagram.ui.AddNewPost.AddNewPostActivity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Window
-import androidx.annotation.RequiresApi
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 
 

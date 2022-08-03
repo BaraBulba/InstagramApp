@@ -1,25 +1,19 @@
-package android.example.instagram.ui.SignInAndLogIn
+package android.example.instagram.ui.SignInAndSignUp
 
-import android.app.Activity
 import android.app.ProgressDialog
 import android.content.Intent
 import android.example.instagram.MainActivity
 import android.example.instagram.databinding.ActivitySignUpBinding
 import android.example.instagram.models.SampleSearchModel
-import android.graphics.drawable.BitmapDrawable
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.MediaStore
 import android.text.TextUtils
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.storage.FirebaseStorage
 import ir.mirrajabi.searchdialog.SimpleSearchDialogCompat
 import ir.mirrajabi.searchdialog.core.SearchResultListener
-import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 

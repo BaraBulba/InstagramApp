@@ -1,4 +1,4 @@
-package android.example.instagram.ui.SignInAndLogIn
+package android.example.instagram.ui.SignInAndSignUp
 
 import android.content.Intent
 import android.example.instagram.databinding.ActivityHelpWithEnterBinding

@@ -1,9 +1,11 @@
 package android.example.instagram.Adapter
 
 import android.content.Context
+import android.content.Intent
 import android.example.instagram.R
 import android.example.instagram.models.Post
 import android.example.instagram.models.Users
+import android.example.instagram.ui.CommentActivity
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.media.Image
 import android.view.LayoutInflater
@@ -43,14 +45,13 @@ class PostsAdapter
         firebaseUser = FirebaseAuth.getInstance().currentUser
         val post = mPost[position]
         var drawable = holder.likeAnimation.drawable
-        holder.descriptionTV.visibility = View.VISIBLE
         holder.descriptionTV.text = post.getDescription()
         Picasso.get().load(post.getPostImage()).into(holder.postedIV)
         publisherInfo(holder.publisherIV, holder.userNameTV, holder.publisherTV, post.getPublisher())
         isLiked(post.getPostId(), holder.likeBtn, holder.postedIV)
         isSaved(post.getPostId(), holder.saveImageBtn)
-        holder.likedTV.visibility = View.VISIBLE
         numberOfLikes(post.getPostId(), holder.likedTV)
+        getComments(post.getPostId(), holder.commentsTV)
 
 
         holder.likeBtn.setOnClickListener{
@@ -77,9 +78,7 @@ class PostsAdapter
 
         holder.postedIV.setOnClickListener(object : DoubleClickListener(){
             override fun onDoubleClick(p0: View?) {
-
-                if (holder.postedIV.tag.equals("like") )
-                {
+                if (holder.postedIV.tag.equals("like") ) {
                     FirebaseDatabase
                         .getInstance("https://instagram-clone-b8b4f-default-rtdb.europe-west1.firebasedatabase.app")
                         .reference
@@ -94,7 +93,6 @@ class PostsAdapter
                     else if (drawable is AnimatedVectorDrawable){
                         avd2 = drawable
                         avd2.start()
-
                     }
                 }
                 else {
@@ -130,7 +128,21 @@ class PostsAdapter
                     .removeValue()
             }
         }
+
+        holder.commentBtn.setOnClickListener {
+            val intent = Intent(mContext, CommentActivity::class.java)
+            intent.putExtra("postId", post.getPostId())
+            intent.putExtra("authorId", post.getPublisher())
+            mContext.startActivity(intent)
+        }
+        holder.commentsTV.setOnClickListener {
+            val intent = Intent(mContext, CommentActivity::class.java)
+            intent.putExtra("postId", post.getPostId())
+            intent.putExtra("authorId", post.getPublisher())
+            mContext.startActivity(intent)
+        }
     }
+
 
     override fun getItemCount(): Int {
         return mPost.size
@@ -174,6 +186,24 @@ class PostsAdapter
             postedIV = itemView.findViewById(R.id.imageViewPost)
             postedIV.scaleType = ImageView.ScaleType.CENTER_CROP
         }
+    }
+
+    private fun getComments(postId: String, commentsTV: TextView) {
+        FirebaseDatabase
+            .getInstance("https://instagram-clone-b8b4f-default-rtdb.europe-west1.firebasedatabase.app")
+            .reference
+            .child("Comments")
+            .child(postId)
+            .addValueEventListener(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    commentsTV.setText("Смотреть все комментарии (${snapshot.childrenCount})")
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+
+                }
+
+            })
     }
 
     private fun publisherInfo
@@ -269,7 +299,7 @@ class PostsAdapter
             override fun onCancelled(error: DatabaseError) {
             }
             override fun onDataChange(datasnapshot: DataSnapshot) {
-                totalLikes.text = "Понравилось: " + datasnapshot.childrenCount.toString()
+                totalLikes.text = "Нравится: " + datasnapshot.childrenCount.toString()
             }
         })
     }

@@ -1,10 +1,10 @@
-package android.example.instagram
+package android.example.instagram.ui.AddNewPost
 
 import android.app.Activity
 import android.app.ProgressDialog
 import android.content.Intent
+import android.example.instagram.MainActivity
 import android.example.instagram.databinding.ActivityAddNewPostBinding
-import android.example.instagram.databinding.ActivityPersonalInformationBinding
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -19,7 +19,6 @@ import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.StorageTask
 import com.google.firebase.storage.UploadTask
 import com.theartofdev.edmodo.cropper.CropImage
-import com.theartofdev.edmodo.cropper.CropImageView
 
 class AddNewPostActivity : AppCompatActivity() {
 
@@ -43,7 +42,7 @@ class AddNewPostActivity : AppCompatActivity() {
         }
 
         binding.ivPostClose.setOnClickListener {
-            val intent= Intent(this,MainActivity::class.java)
+            val intent= Intent(this, MainActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
             finish()

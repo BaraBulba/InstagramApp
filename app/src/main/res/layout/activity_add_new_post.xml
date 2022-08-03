@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddNewPostActivity">
+    tools:context=".ui.AddNewPost.AddNewPostActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -86,7 +86,7 @@
         android:layout_height="50dp"
         android:background="@drawable/bg_grey_only_bot"
         android:hint="Введите подпись..."
-        android:paddingStart="24dp"
+        android:paddingStart="12dp"
         android:maxLines="6"
         android:ellipsize="start"
         android:textCursorDrawable="@color/black"

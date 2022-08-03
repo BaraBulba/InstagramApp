@@ -36,6 +36,7 @@
         <entry key="..\:/Instagram/app/src/main/res/drawable/leave_a_like_toggle_btn.xml" value="0.2585" />
         <entry key="..\:/Instagram/app/src/main/res/drawable/like_anomation.xml" value="0.2585" />
         <entry key="..\:/Instagram/app/src/main/res/drawable/profile_dialog_bg.xml" value="0.2585" />
+        <entry key="..\:/Instagram/app/src/main/res/drawable/publish_comment_text_view_state.xml" value="0.259" />
         <entry key="..\:/Instagram/app/src/main/res/drawable/save_photo_toggle_btn.xml" value="0.2585" />
         <entry key="..\:/Instagram/app/src/main/res/drawable/splash_image.xml" value="0.1525" />
         <entry key="..\:/Instagram/app/src/main/res/layout/activity_acces_to_your_account.xml" value="0.36666666666666664" />
@@ -43,6 +44,7 @@
         <entry key="..\:/Instagram/app/src/main/res/layout/activity_account_settings.xml" value="0.33" />
         <entry key="..\:/Instagram/app/src/main/res/layout/activity_add_new_post.xml" value="0.33" />
         <entry key="..\:/Instagram/app/src/main/res/layout/activity_change_password_and_email.xml" value="0.36666666666666664" />
+        <entry key="..\:/Instagram/app/src/main/res/layout/activity_comment.xml" value="0.36666666666666664" />
         <entry key="..\:/Instagram/app/src/main/res/layout/activity_help_with_enter.xml" value="0.36666666666666664" />
         <entry key="..\:/Instagram/app/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
         <entry key="..\:/Instagram/app/src/main/res/layout/activity_main.xml" value="0.33" />
@@ -50,17 +52,23 @@
         <entry key="..\:/Instagram/app/src/main/res/layout/activity_sign_in.xml" value="0.36666666666666664" />
         <entry key="..\:/Instagram/app/src/main/res/layout/activity_sign_up.xml" value="0.36666666666666664" />
         <entry key="..\:/Instagram/app/src/main/res/layout/activity_splas_screen.xml" value="0.36666666666666664" />
+        <entry key="..\:/Instagram/app/src/main/res/layout/activity_splash_screen.xml" value="0.36666666666666664" />
         <entry key="..\:/Instagram/app/src/main/res/layout/activity_start_sign_in.xml" value="0.36666666666666664" />
         <entry key="..\:/Instagram/app/src/main/res/layout/dialog_photo.xml" value="0.36666666666666664" />
         <entry key="..\:/Instagram/app/src/main/res/layout/fragment_add.xml" value="0.36666666666666664" />
         <entry key="..\:/Instagram/app/src/main/res/layout/fragment_dialog_photo.xml" value="0.36666666666666664" />
         <entry key="..\:/Instagram/app/src/main/res/layout/fragment_favorite.xml" value="0.35260416666666666" />
         <entry key="..\:/Instagram/app/src/main/res/layout/fragment_home.xml" value="0.36666666666666664" />
+        <entry key="..\:/Instagram/app/src/main/res/layout/fragment_my_posts_profile.xml" value="0.36666666666666664" />
+        <entry key="..\:/Instagram/app/src/main/res/layout/fragment_notifications.xml" value="0.36666666666666664" />
         <entry key="..\:/Instagram/app/src/main/res/layout/fragment_person.xml" value="0.35260416666666666" />
         <entry key="..\:/Instagram/app/src/main/res/layout/fragment_photos.xml" value="0.36666666666666664" />
         <entry key="..\:/Instagram/app/src/main/res/layout/fragment_profile.xml" value="0.36666666666666664" />
         <entry key="..\:/Instagram/app/src/main/res/layout/fragment_profile_posts.xml" value="0.36666666666666664" />
+        <entry key="..\:/Instagram/app/src/main/res/layout/fragment_saved_posts_profile.xml" value="0.36666666666666664" />
         <entry key="..\:/Instagram/app/src/main/res/layout/fragment_search.xml" value="0.35260416666666666" />
+        <entry key="..\:/Instagram/app/src/main/res/layout/item_comments.xml" value="0.33" />
+        <entry key="..\:/Instagram/app/src/main/res/layout/item_notifications.xml" value="0.365625" />
         <entry key="..\:/Instagram/app/src/main/res/layout/item_posts_layout.xml" value="0.365625" />
         <entry key="..\:/Instagram/app/src/main/res/layout/item_profile_posts_photo.xml" value="0.36666666666666664" />
         <entry key="..\:/Instagram/app/src/main/res/layout/item_user_search.xml" value="0.36666666666666664" />

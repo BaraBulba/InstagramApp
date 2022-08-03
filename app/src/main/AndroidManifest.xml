@@ -19,10 +19,15 @@
         android:theme="@style/Theme.Instagram"
         tools:targetApi="31">
         <activity
+            android:name=".ui.CommentActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity"/>
+        <activity
             android:name=".ui.SplashScreenActivity"
-            android:exported="true" >
-            <intent-filter >
+            android:exported="true">
+            <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
+
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
@@ -30,31 +35,30 @@
             android:name=".ui.Profile.ChangePasswordAndEmailActivity"
             android:exported="false" />
         <activity
-            android:name=".AddNewPostActivity"
+            android:name=".ui.AddNewPost.AddNewPostActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.SignInAndLogIn.AccessToYourAccountActivity"
+            android:name=".ui.SignInAndSignUp.AccessToYourAccountActivity"
             android:exported="false"
-            android:parentActivityName=".ui.SignInAndLogIn.LoginActivity" />
+            android:parentActivityName=".ui.SignInAndSignUp.LoginActivity" />
         <activity
-            android:name=".ui.SignInAndLogIn.HelpWithEnterActivity"
+            android:name=".ui.SignInAndSignUp.HelpWithEnterActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.SignInAndLogIn.SignUpActivity"
+            android:name=".ui.SignInAndSignUp.SignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.SignInAndLogIn.LoginActivity"
+            android:name=".ui.SignInAndSignUp.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.SignInAndLogIn.StartSignInActivity"
-            android:exported="false">
-        </activity>
+            android:name=".ui.SignInAndSignUp.StartSignInActivity"
+            android:exported="false"></activity>
         <activity
-            android:name=".ui.PersonalInformationActivity"
+            android:name=".ui.Profile.PersonalInformationActivity"
             android:exported="false"
-            android:parentActivityName=".ui.AccountSettingsActivity" />
+            android:parentActivityName=".ui.Profile.AccountSettingsActivity" />
         <activity
-            android:name=".ui.AccountSettingsActivity"
+            android:name=".ui.Profile.AccountSettingsActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

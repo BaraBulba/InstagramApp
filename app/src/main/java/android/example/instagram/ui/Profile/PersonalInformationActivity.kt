@@ -1,4 +1,4 @@
-package android.example.instagram.ui
+package android.example.instagram.ui.Profile
 
 import android.example.instagram.databinding.ActivityPersonalInformationBinding
 import androidx.appcompat.app.AppCompatActivity

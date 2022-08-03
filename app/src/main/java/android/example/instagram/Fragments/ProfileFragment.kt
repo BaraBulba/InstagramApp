@@ -4,22 +4,23 @@ import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.example.instagram.Adapter.UserAdapter
-import android.example.instagram.MainActivity
-import android.example.instagram.ui.AccountSettingsActivity
+import android.example.instagram.Adapter.ViewPagerAdapter
+import android.example.instagram.ui.Profile.AccountSettingsActivity
 import android.example.instagram.R
 import android.example.instagram.databinding.FragmentProfileBinding
 import android.example.instagram.models.Post
 import android.example.instagram.models.Users
 import android.example.instagram.ui.Profile.ChangePasswordAndEmailActivity
-import android.example.instagram.ui.SignInAndLogIn.StartSignInActivity
+import android.example.instagram.ui.SignInAndSignUp.StartSignInActivity
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.*
 import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
-import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.tabs.TabLayoutMediator
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
@@ -32,8 +33,15 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     private lateinit var profileId: String
     private var firebaseUser: FirebaseUser? = null
     private var userAdapter: UserAdapter? = null
-    private val mPost: List<Post>? = null
 
+    private val fragmentList = listOf(
+        MyPostsProfileFragment.newInstance(),
+        SavedPostsProfileFragment.newInstance()
+    )
+    private val fragmentListImages = listOf(
+        R.drawable.ic_photo,
+        R.drawable.ic_photos_with
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -55,6 +63,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
         return binding.root
     }
+
+
 
     private fun checkFollowAndFollowing() {
         val followRef = firebaseUser?.uid.let { it1 ->
@@ -132,13 +142,12 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         binding.menuProfile.setOnClickListener {
             showMenuDialog()
         }
-        binding.scrollView.setOnRefreshListener {
-            getFollowers()
-            getFollowing()
-            userInfo()
-            getPosts()
-            binding.scrollView.isRefreshing = false
-        }
+        val adapter = ViewPagerAdapter((activity as AppCompatActivity),fragmentList)
+        binding.viewPagerLayout.adapter = adapter
+        TabLayoutMediator(binding.tabLayout, binding.viewPagerLayout){
+            tab, pos -> tab.setIcon(fragmentListImages[pos])
+        }.attach()
+
         getFollowers()
         getFollowing()
         userInfo()
@@ -298,15 +307,13 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                     binding.profileBioTV.text = user!!.getBio()
                     binding.profileWebSiteTV.text = user!!.getWebSite()
                     binding.profileWebSiteTV.visibility = View.VISIBLE
-
                 }
             }
-
             override fun onCancelled(error: DatabaseError) {
-
             }
         })
     }
+
 
     override fun onStop() {
         super.onStop()
@@ -329,4 +336,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         pref?.apply()
     }
 
+
 }
+
+

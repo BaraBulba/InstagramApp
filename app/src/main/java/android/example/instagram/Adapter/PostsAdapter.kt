@@ -63,7 +63,7 @@ class PostsAdapter
                     .child("Likes").child(post.getPostId())
                     .child(firebaseUser!!.uid)
                     .setValue(true)
-//                pushNotification(post.getPostId(),post.getPublisher())
+                pushNotification(post.getPostId(),post.getPublisher())
             }
             else
             {
@@ -106,15 +106,14 @@ class PostsAdapter
             }
         })
 
-
         holder.saveImageBtn.setOnClickListener{
             if (holder.saveImageBtn.tag.toString() == "save")
             {
                 FirebaseDatabase
                     .getInstance("https://instagram-clone-b8b4f-default-rtdb.europe-west1.firebasedatabase.app")
                     .reference
-                    .child("Saves").child(post.getPostId())
-                    .child(firebaseUser!!.uid)
+                    .child("Saves").child(firebaseUser!!.uid)
+                    .child(post.getPostId())
                     .setValue(true)
                 Toast.makeText(mContext, " Post is Saved ", Toast.LENGTH_SHORT).show()
             }
@@ -123,8 +122,8 @@ class PostsAdapter
                 FirebaseDatabase
                     .getInstance("https://instagram-clone-b8b4f-default-rtdb.europe-west1.firebasedatabase.app")
                     .reference
-                    .child("Saves").child(post.getPostId())
-                    .child(firebaseUser!!.uid)
+                    .child("Saves").child(firebaseUser!!.uid)
+                    .child(post.getPostId())
                     .removeValue()
             }
         }
@@ -143,6 +142,21 @@ class PostsAdapter
         }
     }
 
+    private fun pushNotification(postId:String, userid:String) {
+
+        val notifyMap = HashMap<String, Any>()
+        notifyMap["userId"] = FirebaseAuth.getInstance().currentUser!!.uid
+        notifyMap["text"] = "нравится ваше фото"
+        notifyMap["postId"] = postId
+        notifyMap["isPost"] = true
+        FirebaseDatabase
+            .getInstance("https://instagram-clone-b8b4f-default-rtdb.europe-west1.firebasedatabase.app")
+            .reference
+            .child("Notifications")
+            .child(userid)
+            .push()
+            .setValue(notifyMap)
+    }
 
     override fun getItemCount(): Int {
         return mPost.size
@@ -268,13 +282,12 @@ class PostsAdapter
                 .getInstance("https://instagram-clone-b8b4f-default-rtdb.europe-west1.firebasedatabase.app")
                 .reference
                 .child("Saves")
-                .child(postid)
-
+                .child(firebaseUser!!.uid)
         postRef.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(error: DatabaseError) {
             }
             override fun onDataChange(datasnapshot: DataSnapshot) {
-                if (datasnapshot.child(FirebaseAuth.getInstance().currentUser!!.uid).exists()) {
+                if (datasnapshot.child(postid).exists()) {
                     imageView.setImageResource(R.drawable.ic_bookmark_fill)
                     imageView.tag = "saved"
                 }

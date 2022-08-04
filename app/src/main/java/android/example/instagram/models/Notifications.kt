@@ -1,26 +1,26 @@
 package android.example.instagram.models
 
 class Notifications {
-    private var userID: String = ""
+    private var userId: String = ""
     private var text: String = ""
-    private var postID: String = ""
+    private var postId: String = ""
     private var isPost: Boolean = false
 
     constructor()
 
-    constructor(userID: String,text: String,postID:String,isPost:Boolean) {
-        this.userID = userID
+    constructor(userId: String,text: String,postId:String,isPost:Boolean) {
+        this.userId = userId
         this.text = text
-        this.postID = postID
+        this.postId = postId
         this.isPost = isPost
     }
 
     fun getPostId():String{
-        return postID
+        return postId
     }
 
     fun getUserId():String{
-        return userID
+        return userId
     }
     fun getText():String{
         return text
@@ -29,12 +29,12 @@ class Notifications {
         return isPost
     }
 
-    fun setPostId(postID: String){
-        this.postID= postID
+    fun setPostId(postId: String){
+        this.postId= postId
     }
 
-    fun setUserId(userID: String){
-        this.userID= userID
+    fun setUserId(userId: String){
+        this.userId= userId
     }
 
     fun setText(text: String){

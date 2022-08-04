@@ -33,7 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Действия"
-                android:textSize="22sp"
+                android:textSize="24sp"
                 android:layout_marginStart="12dp"
                 android:textColor="@color/black"
                 android:textStyle="bold"

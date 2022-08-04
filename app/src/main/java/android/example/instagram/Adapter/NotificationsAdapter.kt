@@ -12,7 +12,6 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.NonNull
-import androidx.appcompat.view.menu.MenuView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -33,7 +32,7 @@ class NotificationsAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotificationsViewHolder {
         val view = LayoutInflater.from(mContext)
-            .inflate(R.layout.item_notifications_follow, parent, false)
+            .inflate(R.layout.item_notifications, parent, false)
         return NotificationsViewHolder(view)
     }
 
@@ -42,6 +41,7 @@ class NotificationsAdapter(
         val notification = mNotifications[position]
 
         userInfo(holder.imageViewAvatar, holder.userNameNotifications, notification.getUserId())
+        holder.descriptionNotifications.text = notification.getText()
         if (notification.getIsPost()){
             holder.imageLikedPhoto.visibility = View.VISIBLE
             getPostedImg(holder.imageLikedPhoto, notification.getPostId())
@@ -52,22 +52,31 @@ class NotificationsAdapter(
 
     }
 
+    override fun getItemCount(): Int {
+        return mNotifications.size
+    }
+
     private fun userInfo(imageViewAvatar: CircleImageView, userNameNotifications: TextView, userId: String) {
         val userRef = FirebaseDatabase
-            .getInstance()
+            .getInstance("https://instagram-clone-b8b4f-default-rtdb.europe-west1.firebasedatabase.app")
             .reference
             .child("Users")
             .child(userId)
         userRef.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
-                val user = snapshot.getValue(Users::class.java)
-                Picasso
-                    .get()
-                    .load(user!!.getImage())
-                    .placeholder(R.drawable.default_ava)
-                    .into(imageViewAvatar)
-                userNameNotifications.text = user.getUserName()
-            }
+                    val user = snapshot.getValue<Users>(Users::class.java)
+                    if (user!!.getImage().isEmpty()) {
+                        imageViewAvatar.setImageResource(R.drawable.default_ava)
+                    } else {
+                        Picasso
+                            .get()
+                            .load(user!!.getImage())
+                            .placeholder(R.drawable.default_ava)
+                            .into(imageViewAvatar)
+                        userNameNotifications.text = user!!.getUserName()
+                    }
+                }
+
 
             override fun onCancelled(error: DatabaseError) {
 
@@ -75,23 +84,18 @@ class NotificationsAdapter(
         })
     }
 
-    override fun getItemCount(): Int {
-        return mNotifications.size
-    }
 
     private fun getPostedImg(postimg:ImageView, postid:String?) {
 
         val postRef= FirebaseDatabase
-            .getInstance()
+            .getInstance("https://instagram-clone-b8b4f-default-rtdb.europe-west1.firebasedatabase.app")
             .reference
             .child("Posts")
             .child(postid!!)
 
         postRef.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(error: DatabaseError) {
-
             }
-
             override fun onDataChange(snapshot: DataSnapshot)
             {
                 val post = snapshot.getValue(Post::class.java)
@@ -102,14 +106,11 @@ class NotificationsAdapter(
 
     inner class NotificationsViewHolder(@NonNull itemView: View)
         : RecyclerView.ViewHolder(itemView){
-        var imageViewAvatar: CircleImageView =  itemView.findViewById(R.id.itemNotificationsAvatar)
+        var imageViewAvatar: CircleImageView = itemView.findViewById(R.id.itemNotificationsAvatar)
         var imageLikedPhoto: ImageView = itemView.findViewById(R.id.imageViewNotificationsLiked)
         var followBtn: Button = itemView.findViewById(R.id.followNotificationsBtn)
         var userNameNotifications: TextView = itemView.findViewById(R.id.itemNotificationsUserName)
         var descriptionNotifications: TextView = itemView.findViewById(R.id.itemNotificationsDescription)
     }
 
-    init {
-
-    }
 }

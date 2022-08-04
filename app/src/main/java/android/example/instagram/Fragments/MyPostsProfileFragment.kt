@@ -24,6 +24,7 @@ import com.google.firebase.database.ValueEventListener
 class MyPostsProfileFragment : Fragment() {
 
     private lateinit var binding: FragmentMyPostsProfileBinding
+    private lateinit var profileId: String
     private var postsAdapter: MyPostsAdapter? = null
     private var postList: MutableList<Post>? = null
     private var firebaseUser: FirebaseUser? = null
@@ -48,12 +49,16 @@ class MyPostsProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val pref = context?.getSharedPreferences("PREFS", Context.MODE_PRIVATE)
+        if (pref != null){
+            this.profileId = pref.getString("profileId", "none")!!
+        }
         retrievePosts()
-        postsAdapter!!.notifyDataSetChanged()
     }
 
 
-    fun retrievePosts() {
+    private fun retrievePosts() {
         val postsRef = FirebaseDatabase
             .getInstance("https://instagram-clone-b8b4f-default-rtdb.europe-west1.firebasedatabase.app")
             .reference
@@ -63,7 +68,7 @@ class MyPostsProfileFragment : Fragment() {
                 postList?.clear()
                 for (snapshot in snapshot.children){
                     val posts = snapshot.getValue(Post::class.java)
-                        if (posts!!.getPublisher().equals(firebaseUser!!.uid))
+                        if (posts!!.getPublisher().equals(profileId))
                             postList!!.add(posts)
                 }
                 postsAdapter!!.notifyDataSetChanged()
@@ -74,6 +79,7 @@ class MyPostsProfileFragment : Fragment() {
             }
         })
     }
+
 
     companion object{
         fun newInstance() = MyPostsProfileFragment()

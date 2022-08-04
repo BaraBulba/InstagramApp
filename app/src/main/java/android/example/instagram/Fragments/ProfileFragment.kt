@@ -3,6 +3,8 @@ package android.example.instagram.Fragments
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
+import android.example.instagram.Adapter.MyPostsAdapter
+import android.example.instagram.Adapter.PostsAdapter
 import android.example.instagram.Adapter.UserAdapter
 import android.example.instagram.Adapter.ViewPagerAdapter
 import android.example.instagram.ui.Profile.AccountSettingsActivity
@@ -118,6 +120,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                             .child("Followers").child(it1.toString())
                             .setValue(true)
                     }
+
                 }
 
                 getButtonText == "Подписки" -> {
@@ -153,6 +156,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         userInfo()
         getPosts()
     }
+
 
 
 

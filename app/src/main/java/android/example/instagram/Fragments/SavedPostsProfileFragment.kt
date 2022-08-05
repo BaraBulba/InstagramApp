@@ -68,11 +68,11 @@ class SavedPostsProfileFragment : Fragment() {
             .getInstance("https://instagram-clone-b8b4f-default-rtdb.europe-west1.firebasedatabase.app")
             .reference
             .child("Saves")
-            .child(firebaseUser!!.uid)
+            .child(profileId)
             .addValueEventListener(object : ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
                     for (snapshot in snapshot.children){
-                        savedIds.add(snapshot.key!!)
+                            savedIds.add(snapshot.key!!)
                     }
                     FirebaseDatabase
                         .getInstance("https://instagram-clone-b8b4f-default-rtdb.europe-west1.firebasedatabase.app")

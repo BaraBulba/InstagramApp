@@ -7,9 +7,12 @@ import android.example.instagram.databinding.ActivityCommentBinding
 import android.example.instagram.models.Comments
 import android.example.instagram.models.Post
 import android.example.instagram.models.Users
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
 import android.text.TextUtils
+import android.text.TextWatcher
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
@@ -57,14 +60,28 @@ class CommentActivity : AppCompatActivity() {
         getComment()
 
         binding.textViewPublishTheComment.setOnClickListener {
-            if (TextUtils.isEmpty(binding.editTextMessage.text.toString())){
-                Toast.makeText(this, "Введите комментарий", Toast.LENGTH_SHORT).show()
-            }
-            else{
-                putComment()
-            }
+            putComment()
         }
+        binding.editTextMessage.addTextChangedListener(object : TextWatcher{
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                    if (p0.toString().trim().length == 0){
+                        binding.textViewPublishTheComment.isEnabled = false
+                        binding.textViewPublishTheComment.setTextColor(Color.parseColor("#78D1FA"))
+                    }
+                else{
+                        binding.textViewPublishTheComment.isEnabled = true
+                        binding.textViewPublishTheComment.setTextColor(Color.parseColor("#2CA2D8"))
+                    }
+            }
+            override fun afterTextChanged(p0: Editable?) {
+            }
+
+        })
+
     }
+
 
     private fun getComment() {
         FirebaseDatabase

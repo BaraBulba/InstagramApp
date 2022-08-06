@@ -64,7 +64,7 @@ class NotificationsAdapter(
             .child(userId)
         userRef.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
-                    val user = snapshot.getValue<Users>(Users::class.java)
+                    val user = snapshot.getValue(Users::class.java)
                     if (user!!.getImage().isEmpty()) {
                         imageViewAvatar.setImageResource(R.drawable.default_ava)
                     } else {

@@ -85,6 +85,7 @@ class PostsAdapter
                         .child("Likes").child(post.getPostId())
                         .child(firebaseUser!!.uid)
                         .setValue(true)
+                    pushNotification(post.getPostId(),post.getPublisher())
                     holder.likeAnimation.alpha = 0.90f
                     if (drawable is AnimatedVectorDrawableCompat){
                         avd = drawable
@@ -143,7 +144,6 @@ class PostsAdapter
     }
 
     private fun pushNotification(postId:String, userid:String) {
-
         val notifyMap = HashMap<String, Any>()
         notifyMap["userId"] = FirebaseAuth.getInstance().currentUser!!.uid
         notifyMap["text"] = "нравится ваше фото"

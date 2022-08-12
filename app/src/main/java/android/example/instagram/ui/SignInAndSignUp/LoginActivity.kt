@@ -11,7 +11,6 @@ import android.text.TextUtils
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import ir.mirrajabi.searchdialog.SimpleSearchDialogCompat
-import ir.mirrajabi.searchdialog.core.SearchResultListener
 
 class LoginActivity : AppCompatActivity() {
 
@@ -36,11 +35,12 @@ class LoginActivity : AppCompatActivity() {
 
         binding.tvChooseLanguage.setOnClickListener {
             SimpleSearchDialogCompat(this, "ВЫБЕРИТЕ СВОЙ ЯЗЫК",
-                "Поиск", null, initData(), SearchResultListener { searchDialog, item, _ ->
-                    Toast.makeText(this, item.title, Toast.LENGTH_SHORT).show()
-                    binding.tvChooseLanguage.text = item.title
-                    searchDialog.dismiss()
-                }).show()
+                "Поиск", null, initData()
+            ) { searchDialog, item, _ ->
+                Toast.makeText(this, item.title, Toast.LENGTH_SHORT).show()
+                binding.tvChooseLanguage.text = item.title
+                searchDialog.dismiss()
+            }.show()
         }
     }
 
@@ -83,7 +83,7 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun initData(): ArrayList<SampleSearchModel>? {
+    private fun initData(): ArrayList<SampleSearchModel> {
         val items = ArrayList<SampleSearchModel>()
         items.add(SampleSearchModel("Ukrainian"))
         items.add(SampleSearchModel("Russian"))
@@ -97,7 +97,7 @@ class LoginActivity : AppCompatActivity() {
         items.add(SampleSearchModel("Korean"))
         items.add(SampleSearchModel("Japanese"))
         items.add(SampleSearchModel("Hindi"))
-        items.add(SampleSearchModel("Portugies"))
+        items.add(SampleSearchModel("Portuguese"))
         return items
     }
 }

@@ -2,27 +2,21 @@ package android.example.instagram.ui.Profile
 
 import android.content.Intent
 import android.example.instagram.MainActivity
-import android.example.instagram.R
-import android.example.instagram.databinding.ActivityAddNewPostBinding
 import android.example.instagram.databinding.ActivityChangePasswordAndEmailBinding
 import android.example.instagram.models.Users
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.google.firebase.auth.EmailAuthCredential
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.squareup.picasso.Picasso
 
 class ChangePasswordAndEmailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityChangePasswordAndEmailBinding
-    private lateinit var firebaseUser: FirebaseUser
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +24,7 @@ class ChangePasswordAndEmailActivity : AppCompatActivity() {
             .also { setContentView(it.root)}
 
         setSupportActionBar(binding.myToolBar)
-        supportActionBar?.setTitle(null)
+        supportActionBar?.title = null
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
 
@@ -87,7 +81,7 @@ class ChangePasswordAndEmailActivity : AppCompatActivity() {
                 EmailAuthProvider.getCredential(it.email!!,pass)
             )?.addOnCompleteListener { task ->
                if (task.isSuccessful){
-                   user?.updateEmail(email)?.addOnCompleteListener { task->
+                   user?.updateEmail(email)?.addOnCompleteListener { task ->
                        if (task.isSuccessful){
                            val userRef = FirebaseDatabase
                                .getInstance("https://instagram-clone-b8b4f-default-rtdb.europe-west1.firebasedatabase.app")

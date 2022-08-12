@@ -12,7 +12,7 @@ class PersonalInformationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityPersonalInformationBinding.inflate(layoutInflater).also { setContentView(it.root)}
         setSupportActionBar(binding.myToolBar)
-        supportActionBar?.setTitle(null)
+        supportActionBar?.title = null
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
     }

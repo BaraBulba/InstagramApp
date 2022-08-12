@@ -3,7 +3,6 @@ package android.example.instagram.Adapter
 import android.content.Context
 import android.example.instagram.R
 import android.example.instagram.models.Post
-import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,7 +21,7 @@ class MyPostsAdapter(
     private var firebaseUser: FirebaseUser? = null
 
     inner class ViewHolder(@NonNull itemView: View): RecyclerView.ViewHolder(itemView) {
-        var imageViewProfilePhotos = itemView.findViewById<ImageView>(R.id.imageViewProfilePhotos)
+        var imageViewProfilePhotos = itemView.findViewById<ImageView>(R.id.imageViewProfilePhotos)!!
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

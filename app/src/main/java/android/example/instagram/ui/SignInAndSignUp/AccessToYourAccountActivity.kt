@@ -23,7 +23,7 @@ class AccessToYourAccountActivity : AppCompatActivity() {
         }
 
         setSupportActionBar(binding.myToolBarAccessToYourAccount)
-        supportActionBar?.setTitle(null)
+        supportActionBar?.title = null
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
 

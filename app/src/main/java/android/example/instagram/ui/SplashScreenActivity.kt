@@ -1,5 +1,6 @@
 package android.example.instagram.ui
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.example.instagram.MainActivity
 import android.example.instagram.R
@@ -9,9 +10,10 @@ import android.os.Bundle
 import android.os.Handler
 import com.google.firebase.auth.FirebaseAuth
 
+@SuppressLint("CustomSplashScreen")
 class SplashScreenActivity : AppCompatActivity() {
 
-    lateinit var handler: Handler
+    private lateinit var handler: Handler
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -27,9 +27,9 @@ class CommentsAdapter(
     private var firebaseUser: FirebaseUser? = null
 
     inner class ViewHolder(@NonNull itemView: View) :RecyclerView.ViewHolder(itemView){
-        var commentatorAvatar = itemView.findViewById<CircleImageView>(R.id.itemCommentatorAvatar)
-        var commentatorUserName = itemView.findViewById<TextView>(R.id.itemCommentatorUserName)
-        var commentatorComment = itemView.findViewById<TextView>(R.id.itemCommentatorMessage)
+        var commentatorAvatar = itemView.findViewById<CircleImageView>(R.id.itemCommentatorAvatar)!!
+        var commentatorUserName = itemView.findViewById<TextView>(R.id.itemCommentatorUserName)!!
+        var commentatorComment = itemView.findViewById<TextView>(R.id.itemCommentatorMessage)!!
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -54,10 +54,10 @@ class CommentsAdapter(
             .addValueEventListener(object : ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val user = snapshot.getValue(Users::class.java)
-                    userName.setText(user!!.getUserName())
+                    userName.text = user!!.getUserName()
                     Picasso
                         .get()
-                        .load(user!!.getImage())
+                        .load(user.getImage())
                         .placeholder(R.drawable.default_ava)
                         .into(image)
                 }

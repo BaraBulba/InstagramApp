@@ -2,17 +2,14 @@ package android.example.instagram.Fragments
 
 import android.content.Context
 import android.example.instagram.Adapter.MyPostsAdapter
-import android.example.instagram.Adapter.PostsAdapter
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.example.instagram.R
 import android.example.instagram.databinding.FragmentMyPostsProfileBinding
 import android.example.instagram.models.Post
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DataSnapshot
@@ -32,7 +29,7 @@ class MyPostsProfileFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentMyPostsProfileBinding.inflate(layoutInflater, container, false)
 
         firebaseUser = FirebaseAuth.getInstance().currentUser
@@ -68,7 +65,7 @@ class MyPostsProfileFragment : Fragment() {
                 postList?.clear()
                 for (snapshot in snapshot.children){
                     val posts = snapshot.getValue(Post::class.java)
-                        if (posts!!.getPublisher().equals(profileId))
+                        if (posts!!.getPublisher() == profileId)
                             postList!!.add(posts)
                 }
                 postsAdapter!!.notifyDataSetChanged()

@@ -43,7 +43,7 @@ class StartSignInActivity : AppCompatActivity() {
         }
     }
 
-    private fun initData(): ArrayList<SampleSearchModel>? {
+    private fun initData(): ArrayList<SampleSearchModel> {
         val items = ArrayList<SampleSearchModel>()
         items.add(SampleSearchModel("Ukrainian"))
         items.add(SampleSearchModel("Russian"))
@@ -57,7 +57,7 @@ class StartSignInActivity : AppCompatActivity() {
         items.add(SampleSearchModel("Korean"))
         items.add(SampleSearchModel("Japanese"))
         items.add(SampleSearchModel("Hindi"))
-        items.add(SampleSearchModel("Portugies"))
+        items.add(SampleSearchModel("Portuguese"))
         return items
     }
 

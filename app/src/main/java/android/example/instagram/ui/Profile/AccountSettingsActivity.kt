@@ -103,8 +103,8 @@ class AccountSettingsActivity : AppCompatActivity() {
                 progressDialog.show()
 
                 val fileRef = storageProfilePicRef!!
-                    .child(firebaseUser.uid.toString() + ".jpg")
-                var uploadTask:StorageTask<*>
+                    .child(firebaseUser.uid + ".jpg")
+                val uploadTask:StorageTask<*>
                 uploadTask = fileRef.putFile(imageUri!!)
                 uploadTask.continueWithTask(Continuation <UploadTask.TaskSnapshot, Task<Uri>>{ task ->
                     if (!task.isSuccessful){
@@ -114,35 +114,40 @@ class AccountSettingsActivity : AppCompatActivity() {
                         }
                     }
                     return@Continuation fileRef.downloadUrl
-                }).addOnCompleteListener (OnCompleteListener<Uri>{task ->
-                    if (task.isSuccessful){
+                }).addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+
                         val downloadUrl = task.result
                         myUrl = downloadUrl.toString()
+
                         val ref = FirebaseDatabase
                             .getInstance("https://instagram-clone-b8b4f-default-rtdb.europe-west1.firebasedatabase.app")
                             .reference
                             .child("Users")
-                        val userMap = HashMap<String, Any>()
-                        userMap["fullName"] = binding.etFullName.text.toString()
-                        userMap["userName"] = binding.etUserName.text.toString().toLowerCase()
-                        userMap["website"] = binding.etWebSite.text.toString().toLowerCase()
-                        userMap["bio"] = binding.etBio.text.toString()
-                        userMap["image"] = myUrl
-                        ref.child(firebaseUser.uid).updateChildren(userMap)
 
-                        Toast
-                            .makeText(this, "Информация аккаунта была удачно обновлена!", Toast.LENGTH_LONG)
-                            .show()
-                        val intent = Intent(this@AccountSettingsActivity, MainActivity::class.java)
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                        val userMap = mutableMapOf<String, Any>(
+                            "fullName" to binding.etFullName.text.toString(),
+                            "userName" to binding.etUserName.text.toString().lowercase(),
+                            "website" to binding.etWebSite.text.toString().lowercase(),
+                            "bio" to binding.etBio.text.toString(),
+                            "image" to myUrl
+                        )
+                        ref.child(firebaseUser.uid).updateChildren(userMap)
+                        Toast.makeText(
+                                this,
+                                "Информация аккаунта была удачно обновлена!",
+                                Toast.LENGTH_LONG
+                            ).show()
+                        val intent = Intent(this, MainActivity::class.java)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or
+                                Intent.FLAG_ACTIVITY_NEW_TASK)
                         startActivity(intent)
                         finish()
                         progressDialog.dismiss()
-                    }
-                    else{
+                    } else {
                         progressDialog.dismiss()
                     }
-                })
+                }
             }
         }
 
@@ -170,11 +175,12 @@ class AccountSettingsActivity : AppCompatActivity() {
                 .getInstance("https://instagram-clone-b8b4f-default-rtdb.europe-west1.firebasedatabase.app")
                 .reference
                 .child("Users")
-            val userMap = HashMap<String, Any>()
-            userMap["fullName"] = binding.etFullName.text.toString()
-            userMap["userName"] = binding.etUserName.text.toString().toLowerCase()
-            userMap["website"] = binding.etWebSite.text.toString().toLowerCase()
-            userMap["bio"] = binding.etBio.text.toString()
+            val userMap = mutableMapOf<String, Any>(
+                "fullName" to binding.etFullName.text.toString(),
+                "userName" to binding.etUserName.text.toString().lowercase(),
+                "website" to binding.etWebSite.text.toString().lowercase(),
+                "bio" to binding.etBio.text.toString()
+            )
             userRef.child(firebaseUser.uid).updateChildren(userMap)
 
             Toast.makeText(this, "Информация аккаунта была удачно обновлена!", Toast.LENGTH_LONG)
@@ -201,9 +207,9 @@ class AccountSettingsActivity : AppCompatActivity() {
                         .placeholder(R.drawable.default_ava)
                         .into(binding.ivChangePhoto)
                     binding.etUserName.setText(user!!.getUserName())
-                    binding.etFullName.setText(user!!.getFullName())
-                    binding.etBio.setText(user!!.getBio())
-                    binding.etWebSite.setText(user!!.getWebSite())
+                    binding.etFullName.setText(user.getFullName())
+                    binding.etBio.setText(user.getBio())
+                    binding.etWebSite.setText(user.getWebSite())
                 }
             }
 

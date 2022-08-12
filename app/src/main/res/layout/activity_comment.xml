@@ -96,6 +96,7 @@
             android:layout_height="0dp"
             android:backgroundTint="@color/white"
             android:hint="Добавьте комментарий..."
+            android:inputType="textCapSentences"
             android:textSize="15sp"
             android:singleLine="true"
             android:layout_marginStart="10dp"

@@ -2,11 +2,9 @@ package android.example.instagram.Fragments
 
 import android.content.Context
 import android.example.instagram.Adapter.NotificationsAdapter
-import android.example.instagram.Adapter.PostsAdapter
 import android.example.instagram.R
 import android.example.instagram.databinding.FragmentNotificationsBinding
 import android.example.instagram.models.Notifications
-import android.example.instagram.models.Post
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -19,7 +17,6 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import java.util.*
 import kotlin.collections.ArrayList
 
 
@@ -34,7 +31,7 @@ class FavoriteFragment : Fragment(R.layout.fragment_notifications) {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentNotificationsBinding.inflate(inflater, container, false)
 
         firebaseUser = FirebaseAuth.getInstance().currentUser
@@ -65,8 +62,8 @@ class FavoriteFragment : Fragment(R.layout.fragment_notifications) {
                     for (snapshot in snapshot.children){
                         notificationList!!.add(snapshot.getValue(Notifications::class.java)!!)
                     }
-                    Collections.reverse(notificationList)
-                    notificationsAdapter?.notifyDataSetChanged()
+                    notificationList?.let { it.reverse() }
+                    notificationsAdapter!!.notifyDataSetChanged()
                 }
 
                 override fun onCancelled(error: DatabaseError) {

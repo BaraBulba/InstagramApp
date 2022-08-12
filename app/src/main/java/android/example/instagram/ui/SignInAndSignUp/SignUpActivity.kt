@@ -26,7 +26,7 @@ class SignUpActivity : AppCompatActivity() {
         binding = ActivitySignUpBinding.inflate(layoutInflater).also { setContentView(it.root) }
 
         binding.buttonSignUp.setOnClickListener {
-            CreateAccount()
+            createAccount()
         }
 
         binding.tvForgotYourDataSignUp.setOnClickListener {
@@ -46,7 +46,7 @@ class SignUpActivity : AppCompatActivity() {
         }
     }
 
-    private fun CreateAccount() {
+    private fun createAccount() {
         val fullName = binding.editTextFullName.text.toString()
         val userName = binding.editTextUserName.text.toString()
         val email = binding.editTextEmail.text.toString()
@@ -96,13 +96,14 @@ class SignUpActivity : AppCompatActivity() {
             .reference
             .child("Users")
 
-        val userMap = HashMap<String, Any>()
-        userMap["uid"] = currentUserID
-        userMap["fullName"] = fullName
-        userMap["userName"] = userName.toLowerCase()
-        userMap["email"] = email
-        userMap["image"] = "http://surl.li/cnmbi"
-        userMap["bio"] = "Стандартное описание профиля."
+        val userMap = mutableMapOf<String, Any>(
+            "uid" to currentUserID,
+            "fullName" to fullName,
+            "userName" to userName.lowercase(),
+            "email" to email,
+            "image" to "http://surl.li/cnmbi",
+            "bio" to "Стандартное описание профиля."
+        )
 
         usersRef.child(currentUserID).setValue(userMap)
             .addOnCompleteListener{ task ->
@@ -132,7 +133,7 @@ class SignUpActivity : AppCompatActivity() {
     }
 
 
-    private fun initData(): ArrayList<SampleSearchModel>? {
+    private fun initData(): ArrayList<SampleSearchModel> {
         val items = ArrayList<SampleSearchModel>()
         items.add(SampleSearchModel("Ukrainian"))
         items.add(SampleSearchModel("Russian"))
@@ -146,7 +147,7 @@ class SignUpActivity : AppCompatActivity() {
         items.add(SampleSearchModel("Korean"))
         items.add(SampleSearchModel("Japanese"))
         items.add(SampleSearchModel("Hindi"))
-        items.add(SampleSearchModel("Portugies"))
+        items.add(SampleSearchModel("Portuguese"))
         return items
     }
 }

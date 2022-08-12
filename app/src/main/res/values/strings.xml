@@ -14,4 +14,23 @@
     <string name="personal_info_warning">Указывайте личную информацию, даже если аккаунт
     используется для компании, домашнего животного или в других целях. Эта информация не будет
     показана в вашем общедоступном профиле</string>
+    <string name="enterYourAccTextView">Доступ к вашему аккаунту</string>
+    <string name="sendEmailTextView">Отправить электронное письмо</string>
+    <string name="sendSmsTextView">Отправить SMS</string>
+    <string name="cantResetPasswordTextView">Не можете сбросить пароль?</string>
+    <string name="appBarTextViewEditProfile">Редактировать профиль</string>
+    <string name="changePhotoProfileTextView">Изменить фото профиля</string>
+    <string name="nameHintEditTextProfileEdit">Имя</string>
+    <string name="textViewPersonalInformationSettings">Настройки личной информации</string>
+    <string name="textViewCreateAvatar">Создать аватар</string>
+    <string name="textViewSwitchToProAccount">Переключиться на профессиональный аккаунт</string>
+    <string name="hintBio">Биография</string>
+    <string name="hintWebsite">Сайт</string>
+    <string name="hintNickname">Имя пользователя</string>
+    <string name="hintEnterText">Введите подпись...</string>
+    <string name="textViewNewPost">Новая публикация</string>
+    <string name="textViewAppBarTitle_settings">Настройки</string>
+    <string name="hintEmail">Электронный адрес</string>
+    <string name="hintPassword">Пароль</string>
+    <string name="btnTextUpdateEmail">Обновить Email</string>
 </resources>

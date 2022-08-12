@@ -2,6 +2,7 @@ package android.example.instagram.Fragments
 
 
 
+import android.annotation.SuppressLint
 import android.example.instagram.Adapter.PostsAdapter
 import android.example.instagram.databinding.FragmentHomeBinding
 import android.example.instagram.models.Post
@@ -30,7 +31,6 @@ class HomeFragment : Fragment() {
     ): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-
         val linearLayoutManager = LinearLayoutManager(context)
         linearLayoutManager.reverseLayout = true
         linearLayoutManager.stackFromEnd = true
@@ -55,8 +55,8 @@ class HomeFragment : Fragment() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()){
                     (followingList as ArrayList<*>).clear()
-                    for (snapshot in snapshot.children){
-                        snapshot.key?.let {
+                    for (snap in snapshot.children){
+                        snap.key?.let {
                             (followingList as ArrayList<String>)
                                 .add(it)
                         }
@@ -77,11 +77,12 @@ class HomeFragment : Fragment() {
             .reference
             .child("Posts")
         postsRef.addValueEventListener(object : ValueEventListener{
+            @SuppressLint("NotifyDataSetChanged")
             override fun onDataChange(snapshot: DataSnapshot) {
                 postList?.clear()
-                for (snapshot in snapshot.children){
-                    val posts = snapshot.getValue(Post::class.java)
-                    for (userID in (followingList as ArrayList<String>)){
+                for (snap in snapshot.children){
+                    val posts = snap.getValue(Post::class.java)
+                    for (userID in (followingList as ArrayList<*>)){
                         if (posts!!.getPublisher() == userID){
 
                             postList!!.add(posts)

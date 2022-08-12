@@ -1,6 +1,5 @@
 package android.example.instagram.Adapter
 
-import android.example.instagram.Fragments.ProfileFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter

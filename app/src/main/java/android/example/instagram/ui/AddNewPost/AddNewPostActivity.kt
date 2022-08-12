@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.google.android.gms.tasks.Continuation
-import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
@@ -31,7 +30,7 @@ class AddNewPostActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAddNewPostBinding.inflate(layoutInflater).also { setContentView(it.root)}
         setSupportActionBar(binding.myPostToolBar)
-        supportActionBar?.setTitle(null)
+        supportActionBar?.title = null
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
 
@@ -75,7 +74,7 @@ class AddNewPostActivity : AppCompatActivity() {
                 progressDialog.show()
                 val fileRef = storagePostPicRef!!
                     .child(System.currentTimeMillis().toString() + ".jpg")
-                var uploadTask: StorageTask<*>
+                val uploadTask: StorageTask<*>
                 uploadTask = fileRef.putFile(imageUri!!)
                 uploadTask.continueWithTask(Continuation <UploadTask.TaskSnapshot, Task<Uri>>{ task ->
                     if (!task.isSuccessful){
@@ -85,8 +84,8 @@ class AddNewPostActivity : AppCompatActivity() {
                         }
                     }
                     return@Continuation fileRef.downloadUrl
-            }).addOnCompleteListener (OnCompleteListener<Uri>{ task ->
-                    if (task.isSuccessful){
+            }).addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
                         val downloadUrl = task.result
                         myUrl = downloadUrl.toString()
                         val ref = FirebaseDatabase
@@ -109,12 +108,11 @@ class AddNewPostActivity : AppCompatActivity() {
                         startActivity(intent)
                         finish()
                         progressDialog.dismiss()
-                    }
-                    else{
+                    } else {
                         progressDialog.dismiss()
                     }
-                })
-        }
+                }
+            }
 
      }
     }

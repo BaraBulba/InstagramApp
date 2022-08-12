@@ -14,8 +14,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -54,7 +52,7 @@ class SearchFragment : Fragment() {
                 } else {
                     recyclerView?.visibility = View.VISIBLE
                     retrieveUsers()
-                    searchUser(s.toString().toLowerCase())
+                    searchUser(s.toString().lowercase())
                 }
             }
             override fun afterTextChanged(p0: Editable?) {
@@ -97,11 +95,11 @@ class SearchFragment : Fragment() {
             .child("Users")
         usersSearchRef.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                if (binding.editTextSearchView.text.toString().equals("")){
+                if (binding.editTextSearchView.text.toString() == ""){
                     mUsers?.clear()
                     for (snapshot in dataSnapshot.children){
                         val users = snapshot.getValue(Users::class.java)
-                        if (!(users == null)){
+                        if (users != null){
                             mUsers?.add(users)
                         }
                         userAdapter?.notifyDataSetChanged()

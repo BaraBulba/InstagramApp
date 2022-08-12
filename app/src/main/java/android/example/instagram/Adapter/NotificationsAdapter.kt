@@ -70,10 +70,10 @@ class NotificationsAdapter(
                     } else {
                         Picasso
                             .get()
-                            .load(user!!.getImage())
+                            .load(user.getImage())
                             .placeholder(R.drawable.default_ava)
                             .into(imageViewAvatar)
-                        userNameNotifications.text = user!!.getUserName()
+                        userNameNotifications.text = user.getUserName()
                     }
                 }
 

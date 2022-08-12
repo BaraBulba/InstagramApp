@@ -3,8 +3,6 @@ package android.example.instagram.Fragments
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
-import android.example.instagram.Adapter.MyPostsAdapter
-import android.example.instagram.Adapter.PostsAdapter
 import android.example.instagram.Adapter.UserAdapter
 import android.example.instagram.Adapter.ViewPagerAdapter
 import android.example.instagram.ui.Profile.AccountSettingsActivity
@@ -48,7 +46,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentProfileBinding.inflate(inflater, container, false)
 
         firebaseUser = FirebaseAuth.getInstance().currentUser!!
@@ -238,7 +236,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                     val post = snapshot.getValue(Post::class.java)
                     if(post!!.getPublisher() == (profileId))
                     {
-                        i = i + 1
+                        i += 1
                     }
                 }
                 binding.totalPosts.text = "" + i
@@ -307,9 +305,9 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                         .placeholder(R.drawable.default_ava)
                         .into(binding.profileImage)
                     binding.profileUserNameTV.text = user!!.getUserName()
-                    binding.profileFullNameTV.text = user!!.getFullName()
-                    binding.profileBioTV.text = user!!.getBio()
-                    binding.profileWebSiteTV.text = user!!.getWebSite()
+                    binding.profileFullNameTV.text = user.getFullName()
+                    binding.profileBioTV.text = user.getBio()
+                    binding.profileWebSiteTV.text = user.getWebSite()
                     binding.profileWebSiteTV.visibility = View.VISIBLE
                 }
             }

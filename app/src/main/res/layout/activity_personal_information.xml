@@ -156,7 +156,7 @@
             android:layout_gravity="start"
             android:background="@color/white"
             android:hint="Пол"
-            android:inputType="text"
+            android:inputType="text|textCapSentences"
             android:maxLines="1"
             android:drawableEnd="@drawable/ic_personal_info_back_btn"
             android:textCursorDrawable="@null"

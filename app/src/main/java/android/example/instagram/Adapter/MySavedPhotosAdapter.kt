@@ -21,7 +21,7 @@ class MySavedPhotosAdapter(
     private var firebaseUser: FirebaseUser? = null
 
     inner class ViewHolder(@NonNull itemView: View): RecyclerView.ViewHolder(itemView) {
-        var imageViewProfileSavedPhotos = itemView.findViewById<ImageView>(R.id.imageViewProfileSavedPhotos)
+        var imageViewProfileSavedPhotos = itemView.findViewById<ImageView>(R.id.imageViewProfileSavedPhotos)!!
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

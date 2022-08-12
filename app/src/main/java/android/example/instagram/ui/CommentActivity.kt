@@ -1,17 +1,14 @@
 package android.example.instagram.ui
 
 import android.example.instagram.Adapter.CommentsAdapter
-import android.example.instagram.Adapter.PostsAdapter
 import android.example.instagram.R
 import android.example.instagram.databinding.ActivityCommentBinding
 import android.example.instagram.models.Comments
-import android.example.instagram.models.Post
 import android.example.instagram.models.Users
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
-import android.text.TextUtils
 import android.text.TextWatcher
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -39,7 +36,7 @@ class CommentActivity : AppCompatActivity() {
         binding = ActivityCommentBinding.inflate(layoutInflater).also { setContentView(it.root) }
 
         setSupportActionBar(binding.myToolBar)
-        supportActionBar?.setTitle(null)
+        supportActionBar?.title = null
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
 
@@ -47,10 +44,10 @@ class CommentActivity : AppCompatActivity() {
         binding.recyclerViewComments.setHasFixedSize(true)
         binding.recyclerViewComments.layoutManager = linearLayoutManager
         commentsList = ArrayList()
-        commentsAdapter = this.let { CommentsAdapter(it, commentsList as ArrayList<Comments>) }
+        commentsAdapter = CommentsAdapter(this, commentsList as ArrayList<Comments>)
         binding.recyclerViewComments.adapter = commentsAdapter
 
-        val intent = getIntent()
+        val intent = intent
         postId = intent.getStringExtra("postId")
         authorId = intent.getStringExtra("authorId")
 
@@ -61,12 +58,13 @@ class CommentActivity : AppCompatActivity() {
 
         binding.textViewPublishTheComment.setOnClickListener {
             putComment()
+            binding.editTextMessage.text.clear()
         }
         binding.editTextMessage.addTextChangedListener(object : TextWatcher{
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                    if (p0.toString().trim().length == 0){
+                    if (p0.toString().trim().isEmpty()){
                         binding.textViewPublishTheComment.isEnabled = false
                         binding.textViewPublishTheComment.setTextColor(Color.parseColor("#78D1FA"))
                     }
@@ -77,11 +75,8 @@ class CommentActivity : AppCompatActivity() {
             }
             override fun afterTextChanged(p0: Editable?) {
             }
-
         })
-
     }
-
 
     private fun getComment() {
         FirebaseDatabase
@@ -141,13 +136,13 @@ class CommentActivity : AppCompatActivity() {
             .addValueEventListener(object :ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val user = snapshot.getValue(Users::class.java)
-                    if (user!!.getImage().equals("default")){
+                    if (user!!.getImage() == "default"){
                         binding.imageProfile.setImageResource(R.mipmap.ic_launcher)
                     }
                     else{
                         Picasso
                             .get()
-                            .load(user!!.getImage())
+                            .load(user.getImage())
                             .placeholder(R.drawable.default_ava)
                             .into(binding.imageProfile)
                     }

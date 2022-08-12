@@ -1,15 +1,12 @@
 package android.example.instagram.Fragments
 
 import android.content.Context
-import android.example.instagram.Adapter.MyPostsAdapter
 import android.example.instagram.Adapter.MySavedPhotosAdapter
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.example.instagram.R
-import android.example.instagram.databinding.FragmentMyPostsProfileBinding
 import android.example.instagram.databinding.FragmentSavedPostsProfileBinding
 import android.example.instagram.models.Post
 import androidx.recyclerview.widget.GridLayoutManager

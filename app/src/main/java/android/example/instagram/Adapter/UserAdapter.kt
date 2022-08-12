@@ -1,6 +1,6 @@
 package android.example.instagram.Adapter
 
-import android.annotation.SuppressLint
+
 import android.content.Context
 import android.example.instagram.Fragments.ProfileFragment
 import android.example.instagram.R
@@ -30,9 +30,9 @@ class UserAdapter (private var mContext: Context,
 
     private var firebaseUser: FirebaseUser? = FirebaseAuth.getInstance().currentUser
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserAdapter.UserViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         val view = LayoutInflater.from(mContext).inflate(R.layout.item_user_search, parent, false)
-        return UserAdapter.UserViewHolder(view)
+        return UserViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
@@ -95,16 +95,16 @@ class UserAdapter (private var mContext: Context,
             }
         }
 
-        holder.itemView.setOnClickListener(View.OnClickListener{
+        holder.itemView.setOnClickListener {
             val pref = mContext.getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit()
-            pref.putString("profileId", user .getUid())
+            pref.putString("profileId", user.getUid())
             pref.apply()
             (mContext as FragmentActivity).supportFragmentManager
                 .beginTransaction()
                 .addToBackStack(null)
                 .replace(R.id.fragment_container, ProfileFragment())
                 .commit()
-        })
+        }
     }
 
     private fun checkFollowingStatus(uid: String, followBtn: Button) {
